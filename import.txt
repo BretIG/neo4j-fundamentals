@@ -1,3 +1,4 @@
+CYPHER 2.3
 create (_0:`Gate` {`number`:1})
 create (_1:`Gate` {`number`:2})
 create (_2:`Gate` {`number`:3})
