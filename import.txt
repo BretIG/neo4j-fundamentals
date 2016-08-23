@@ -1,4 +1,4 @@
-
+//create fundamentals data set
 create (_0:`Gate` {`number`:1})
 create (_1:`Gate` {`number`:2})
 create (_2:`Gate` {`number`:3})
