@@ -1,4 +1,4 @@
-# neo4j-fundamentals
+# neo4j-fundamentals for 3.0
 
 Code for fundamentals slides. You'll need rNeo4j, Neo4j 3.X, R, and RStudio to build / edit
 
