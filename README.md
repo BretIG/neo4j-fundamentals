@@ -10,4 +10,11 @@ Neo4j will need to be running at :7474 to allow rPres to check queries.
 
 Copy the .csv files into `{neo4j-home}/Neo4j-Enterprise-3.x.x/import/` that's where Neo4j 3.X expects `LOAD CSV` files to be stored. 
 
-The .pdf is where the class should start, covers the basics of the property graph model, this deck is returned to at the end of the class to review architecture and use cases. 
+# Leading the Class
+
+Start with neo4j-property-graph.pdf as an overview of Neo4j's underlying datamodel
+
+Then use the cypher-tutorial.html (works best in Chrome) to teach the basics of Cypher
+
+Last discuss architecture and use-cases with use-cases.pdf 
+
