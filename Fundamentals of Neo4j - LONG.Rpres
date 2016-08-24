@@ -1,4 +1,4 @@
-Fundamentals of Neo4j
+Fundamentals of Neo4j 3.0
 ========================================================
 author: 
 date: 
@@ -35,7 +35,7 @@ testNonTabular = function(query) {
 Today's Data & Slides
 ========================================================
 
-# `bit.ly/dfw-data`
+# `bit.ly/neo4j_dfw_data`
 # `bit.ly/dfw-slides-long`
 
 Agenda
@@ -1322,9 +1322,10 @@ Setup
 ========================================================
 
 ### CSVs
-#### `bit.ly/dfw-csv`
+#### `bit.ly/neo4j_dfw_csv`
 
 ### Clear Your DB
+
 ```{r, echo=FALSE}
 query = 
 "MATCH (n) DETACH DELETE n;
@@ -1336,16 +1337,14 @@ cat(query)
 clear(graph, input=F)
 ```
 
-### Filepaths
+### Copy CSVs into:
 
-#### OSX and Unix 
-`file:///path/to/data.csv`
+#### /path/to/my/neo4j/neo4j-enterprise-3.0.4/import/
 
-#### Windows
-`file:C:/path/to/data.csv`
+
 
 ```{r, echo=FALSE}
-FILEPATH = paste0("file://", getwd(), "/csv/")
+FILEPATH = paste0("file:///")
 ```
 
 Uniqueness Constraints & Indexes
@@ -1376,7 +1375,7 @@ Gates & Terminals
 
 ```{r, echo=FALSE}
 query = 
-"LOAD CSV WITH HEADERS FROM {filepath} AS line
+"LOAD CSV WITH HEADERS FROM 'FILE:///gates_terminals.csv' AS line
 MERGE (t:Terminal {name: line.terminal })
 MERGE (:Gate {number: TOINT(line.gate )})-[:IN_TERMINAL]->(t);
 "
@@ -1395,7 +1394,7 @@ Places
 
 ```{r, echo=FALSE}
 query = 
-"LOAD CSV WITH HEADERS FROM {filepath} AS line
+"LOAD CSV WITH HEADERS FROM 'FILE:///places.csv' AS line
 MATCH (t:Terminal {name: line.terminal })
 MATCH (gate:Gate {number: TOINT(line.gate) })-[:IN_TERMINAL]->(t)
 MERGE (place:Place {name: line.place })
@@ -1416,7 +1415,7 @@ Users
 
 ```{r, echo=FALSE}
 query = 
-"LOAD CSV WITH HEADERS FROM {filepath} AS line
+"LOAD CSV WITH HEADERS FROM 'FILE:///users.csv' AS line
 MERGE (:User {name: line.user })
 "
 ```
@@ -1434,7 +1433,7 @@ Friends
 
 ```{r, echo=FALSE}
 query = 
-"LOAD CSV WITH HEADERS FROM {filepath} AS line
+"LOAD CSV WITH HEADERS FROM 'FILE:///friends.csv' AS line
 MATCH (a:User {name: line.user_a })
 MATCH (b:User {name: line.user_b })
 MERGE (a)-[:FRIENDS_WITH]-(b);
@@ -1454,7 +1453,7 @@ Check-Ins
 
 ```{r, echo=FALSE}
 query = 
-"LOAD CSV WITH HEADERS FROM {filepath} AS line
+"LOAD CSV WITH HEADERS FROM 'FILE:///check_ins.csv' AS line
 MATCH (place:Place {name: line.place })
 MATCH (user:User {name: line.user })
 MERGE (user)-[:CHECKED_INTO]->(place);
@@ -1474,7 +1473,7 @@ Likes
 
 ```{r, echo=FALSE}
 query = 
-"LOAD CSV WITH HEADERS FROM {filepath} AS line
+"LOAD CSV WITH HEADERS FROM 'FILE:///likes.csv' AS line
 MATCH (place:Place {name: line.place })
 MATCH (user:User {name: line.user })
 MERGE (user)-[r:LIKED]->(place)
@@ -1502,7 +1501,7 @@ Lab
 
 ```{r, echo=FALSE}
 query = 
-"LOAD CSV WITH HEADERS FROM {filepath} AS line
+"LOAD CSV WITH HEADERS FROM 'FILE:///categories.csv' AS line
 MATCH (place:Place {name: line.place })
 MERGE (category:Category {name: line.category})
 MERGE (place)-[:IN_CATEGORY]->(category)
