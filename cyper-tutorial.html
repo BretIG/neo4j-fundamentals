@@ -794,9 +794,39 @@ hljs.initHighlightingOnLoad();
 <section data-transition="linear" data-transition-speed="default">
 <h3>Today&#x27;s Data &amp; Slides</h3>
 <div class="slideContent" >
-<h1><code>bit.ly/neo4j_dfw_data</code></h1>
+<h2><code>bit.ly/neo4j_dfw_data</code></h2>
 
-<h1><code>bit.ly/dfw-slides-long</code></h1>
+<h2><code>bit.ly/neo4j_slides_intro</code></h2>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Setup</h3>
+<div class="slideContent" >
+<ul>
+<li>Go to:  <code>neo4j.com</code></li>
+<li>Click on: <code>Download Neo4j</code></li>
+<li>Download the Community Edition</li>
+</ul>
+
+<h3>Mac</h3>
+
+<ul>
+<li>Unzip <code>neo4j-community-3.X.X-unix.tar.gz</code> (double-click it)</li>
+<li><code>cd</code> to the extracted <code>neo4j-community-3.X.X</code> directory in the Terminal</li>
+<li>Execute <code>./bin/neo4j start</code></li>
+<li>Go to <code>localhost:7474</code></li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Double-click the downloaded <code>.exe</code> file</li>
+<li>Run Neo4j after installation finishes</li>
+<li>Click Start</li>
+<li>Go to <code>localhost:7474</code></li>
+</ul>
 
 </div>
 
@@ -1036,10 +1066,10 @@ RETURN p.name AS barbecue
 <h3>Results</h3>
 
 <pre><code>                barbecue
-        Cousin&#39;s Bar-B-Q
-            Railhead BBQ
    Dickey&#39;s Barbecue Pit
+        Cousin&#39;s Bar-B-Q
  The Salt Lick Bar-B-Que
+            Railhead BBQ
 </code></pre>
 
 </div>
@@ -1059,10 +1089,10 @@ RETURN p.name AS barbecue
 <h3>Result</h3>
 
 <pre><code>                barbecue
-        Cousin&#39;s Bar-B-Q
-            Railhead BBQ
    Dickey&#39;s Barbecue Pit
+        Cousin&#39;s Bar-B-Q
  The Salt Lick Bar-B-Que
+            Railhead BBQ
 </code></pre>
 
 </div>
@@ -1083,17 +1113,17 @@ RETURN p.name AS place, c.name AS category
 <h3>Result</h3>
 
 <pre><code>                            place category
-                Rider&#39;s World Bar      Bar
-                          Fly Bar      Bar
  Texas Stadium Skybox Bar &amp; Grill      Bar
-     Tigin Irish Pub &amp; Restaurant      Bar
-           Gas Monkey Bar &amp; Grill      Bar
-                      Cowtown Bar      Bar
                         Vino Volo      Bar
-                 Cousin&#39;s Bar-B-Q Barbecue
-                     Railhead BBQ Barbecue
+                      Cowtown Bar      Bar
+                          Fly Bar      Bar
+                Rider&#39;s World Bar      Bar
+           Gas Monkey Bar &amp; Grill      Bar
+     Tigin Irish Pub &amp; Restaurant      Bar
             Dickey&#39;s Barbecue Pit Barbecue
+                 Cousin&#39;s Bar-B-Q Barbecue
           The Salt Lick Bar-B-Que Barbecue
+                     Railhead BBQ Barbecue
 </code></pre>
 
 </div>
@@ -1114,17 +1144,17 @@ RETURN p.name AS place, c.name AS category
 <h3>Result</h3>
 
 <pre><code>                            place category
-                Rider&#39;s World Bar      Bar
-                          Fly Bar      Bar
  Texas Stadium Skybox Bar &amp; Grill      Bar
-     Tigin Irish Pub &amp; Restaurant      Bar
-           Gas Monkey Bar &amp; Grill      Bar
-                      Cowtown Bar      Bar
                         Vino Volo      Bar
-                 Cousin&#39;s Bar-B-Q Barbecue
-                     Railhead BBQ Barbecue
+                      Cowtown Bar      Bar
+                          Fly Bar      Bar
+                Rider&#39;s World Bar      Bar
+           Gas Monkey Bar &amp; Grill      Bar
+     Tigin Irish Pub &amp; Restaurant      Bar
             Dickey&#39;s Barbecue Pit Barbecue
+                 Cousin&#39;s Bar-B-Q Barbecue
           The Salt Lick Bar-B-Que Barbecue
+                     Railhead BBQ Barbecue
 </code></pre>
 
 </div>
@@ -1240,15 +1270,15 @@ RETURN p.name AS place, g.number AS gate
 <h3>Result</h3>
 
 <pre><code>                            place gate
-                Rider&#39;s World Bar   15
-                          Fly Bar   27
  Texas Stadium Skybox Bar &amp; Grill   25
  Texas Stadium Skybox Bar &amp; Grill    6
-     Tigin Irish Pub &amp; Restaurant   20
-           Gas Monkey Bar &amp; Grill   31
-                      Cowtown Bar   35
-                        Vino Volo   27
                         Vino Volo   17
+                        Vino Volo   27
+                      Cowtown Bar   35
+                          Fly Bar   27
+                Rider&#39;s World Bar   15
+           Gas Monkey Bar &amp; Grill   31
+     Tigin Irish Pub &amp; Restaurant   20
 </code></pre>
 
 </div>
@@ -1279,8 +1309,8 @@ ORDER BY place
  Texas Stadium Skybox Bar &amp; Grill   25        C
  Texas Stadium Skybox Bar &amp; Grill    6        B
      Tigin Irish Pub &amp; Restaurant   20        D
-                        Vino Volo   27        E
                         Vino Volo   17        A
+                        Vino Volo   27        E
 </code></pre>
 
 </div>
@@ -1381,8 +1411,8 @@ RETURN u1, u2, p
 
 <h3>Query</h3>
 
-<pre><code>MATCH (alice:User)-[:LIKED]-&gt;(p:Place)
-WHERE alice.name = &#39;Alice&#39; AND NOT (alice)-[:CHECKED_INTO]-&gt;(p)
+<pre><code>MATCH (u:User)-[:LIKED]-&gt;(p:Place)
+WHERE u.name = &#39;Alice&#39; AND NOT (u)-[:CHECKED_INTO]-&gt;(p)
 RETURN p.name AS place
 </code></pre>
 
@@ -1501,10 +1531,10 @@ ORDER BY friends DESC
 <h3>Result</h3>
 
 <pre><code>    user friends          friends_names
-    Hank       3   Alice, David, Elaine
-   Alice       3 Hank, Forrest, Charles
-  Elaine       2          Hank, Forrest
- Forrest       2          Alice, Elaine
+    Hank       3   David, Alice, Elaine
+   Alice       3 Hank, Charles, Forrest
+  Elaine       2          Forrest, Hank
+ Forrest       2          Elaine, Alice
    David       1                   Hank
  Charles       1                  Alice
      Bob       0                   NULL
@@ -1578,9 +1608,9 @@ ORDER BY friends DESC
 
 <h3>Query</h3>
 
-<pre><code>MATCH (alice:User)-[r:LIKED|CHECKED_INTO]-&gt;(place:Place),
+<pre><code>MATCH (u:User)-[r:LIKED|CHECKED_INTO]-&gt;(place:Place),
       (place)-[:IN_CATEGORY]-&gt;(c:Category)
-WHERE alice.name = &#39;Alice&#39; AND c.name = &#39;Fast Food&#39;
+WHERE u.name = &#39;Alice&#39; AND c.name = &#39;Fast Food&#39;
 RETURN place.name AS place, COLLECT(TYPE(r)) AS type
 </code></pre>
 
@@ -1589,7 +1619,7 @@ RETURN place.name AS place, COLLECT(TYPE(r)) AS type
 <pre><code>             place                type
        Burger King               LIKED
         McDonald&#39;s        CHECKED_INTO
- Pizza Hut Express LIKED, CHECKED_INTO
+ Pizza Hut Express CHECKED_INTO, LIKED
 </code></pre>
 
 </div>
@@ -1602,8 +1632,8 @@ RETURN place.name AS place, COLLECT(TYPE(r)) AS type
 
 <h3>Query</h3>
 
-<pre><code>MATCH (alice:User)-[r:LIKED]-&gt;(p:Place)
-WHERE alice.name = &#39;Alice&#39;
+<pre><code>MATCH (u:User)-[r:LIKED]-&gt;(p:Place)
+WHERE u.name = &#39;Alice&#39;
 RETURN p.name AS place, r.score AS score
 ORDER BY score DESC
 </code></pre>
@@ -1629,12 +1659,12 @@ ORDER BY score DESC
 
 <h3>Query</h3>
 
-<pre><code>MATCH (alice:User)-[:FRIENDS_WITH]-(friend:User),
+<pre><code>MATCH (u:User)-[:FRIENDS_WITH]-(friend:User),
       (friend)-[r:LIKED]-&gt;(place:Place),
       (place)-[:IN_CATEGORY]-&gt;(c:Category)
-WHERE alice.name = &#39;Alice&#39; AND 
+WHERE u.name = &#39;Alice&#39; AND 
       c.name IN [&#39;Fast Food&#39;, &#39;Desserts &amp; Snacks&#39;] AND
-      NOT (alice)-[:LIKED|CHECKED_INTO]-&gt;(place)
+      NOT (u)-[:LIKED|CHECKED_INTO]-&gt;(place)
 RETURN place.name AS place, AVG(r.score) AS avg_score
 ORDER BY avg_score DESC
 </code></pre>
@@ -1679,8 +1709,8 @@ RETURN u.name AS user, p.name AS place
  Forrest              Power &amp; Internet
  Forrest    Pappadeaux Seafood Kitchen
      Ian                     Cereality
-     Jan Freshens Smoothies and Yogurt
      Jan                   Jamba Juice
+     Jan Freshens Smoothies and Yogurt
 </code></pre>
 
 </div>
@@ -1693,19 +1723,19 @@ RETURN u.name AS user, p.name AS place
 
 <h3>Query</h3>
 
-<pre><code>MATCH (alice:User)-[r:LIKED|CHECKED_INTO]-&gt;(place:Place),
+<pre><code>MATCH (u:User)-[r:LIKED|CHECKED_INTO]-&gt;(place:Place),
       (place)-[:IN_CATEGORY]-&gt;(c:Category)
-WHERE alice.name = &#39;Alice&#39; AND c.name = &#39;Fast Food&#39;
+WHERE u.name = &#39;Alice&#39; AND c.name = &#39;Fast Food&#39;
 RETURN place.name AS place, r.score AS score
 </code></pre>
 
 <h3>Result</h3>
 
 <pre><code>             place score
-       Burger King     1
- Pizza Hut Express     4
  Pizza Hut Express    NA
+ Pizza Hut Express     4
         McDonald&#39;s    NA
+       Burger King     1
 </code></pre>
 
 </div>
@@ -1718,9 +1748,9 @@ RETURN place.name AS place, r.score AS score
 
 <h3>Query</h3>
 
-<pre><code>MATCH (alice:User)-[r:LIKED|CHECKED_INTO]-&gt;(place:Place),
+<pre><code>MATCH (u:User)-[r:LIKED|CHECKED_INTO]-&gt;(place:Place),
       (place)-[:IN_CATEGORY]-&gt;(c:Category)
-WHERE alice.name = &#39;Alice&#39; AND c.name = &#39;Fast Food&#39;
+WHERE u.name = &#39;Alice&#39; AND c.name = &#39;Fast Food&#39;
 RETURN place.name AS place, 
        TYPE(r) AS action, 
        r.score AS score
@@ -1729,10 +1759,10 @@ RETURN place.name AS place,
 <h3>Result</h3>
 
 <pre><code>             place       action score
-       Burger King        LIKED     1
- Pizza Hut Express        LIKED     4
  Pizza Hut Express CHECKED_INTO    NA
+ Pizza Hut Express        LIKED     4
         McDonald&#39;s CHECKED_INTO    NA
+       Burger King        LIKED     1
 </code></pre>
 
 </div>
@@ -2035,7 +2065,7 @@ RETURN u.name, u.created, u.accessed
 <h3>Result</h3>
 
 <pre><code>    u.name     u.created u.accessed
- Your Name 1471994297714          0
+ Your Name 1472104477724          0
 </code></pre>
 
 </div>
@@ -2137,7 +2167,7 @@ DETACH DELETE ian;
 <pre><code>CREATE (:User {name:&#39;Your Name&#39;})
 </code></pre>
 
-<pre><code>Node 5870 already exists with label User and property &quot;name&quot;=[Your Name]
+<pre><code>Node 387999 already exists with label User and property &quot;name&quot;=[Your Name]
 </code></pre>
 
 <h3>Notes</h3>
@@ -2172,7 +2202,7 @@ DETACH DELETE ian;
 
 <h3>Result</h3>
 
-<pre><code>Node 5870 already exists with label User and property &quot;name&quot;=[Your Name]
+<pre><code>Node 387999 already exists with label User and property &quot;name&quot;=[Your Name]
 </code></pre>
 
 </div>
@@ -2357,6 +2387,30 @@ MATCH (place:Place {name: line.place })
 MERGE (category:Category {name: line.category})
 MERGE (place)-[:IN_CATEGORY]-&gt;(category)
 </code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+
+<div class="slideContent noTitle" >
+<h1>The End!</h1>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+
+<div class="slideContent noTitle" >
+<h1>Next Steps</h1>
+
+<ul>
+<li>Check out common use cases: <code>neo4j.com/use-cases</code></li>
+<li>Check out our customer list: <code>neo4j.com/customers</code></li>
+<li>Import your own data into Neo4j with <code>LOAD CSV</code></li>
+<li>Post questions on StackOverflow with tag <code>neo4j</code></li>
+<li>Join a meetup: <code>neo4j.meetup.com</code></li>
+</ul>
 
 </div>
 
